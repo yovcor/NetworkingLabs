@@ -79,4 +79,36 @@ and 20. PC1 then successfully reached PC2 in VLAN 20.
 
 ![Successful ping from PC1 in VLAN 10 to PC2 in VLAN 20](./inter_VLAN_ping.png)
 
+ 3. Multi-Area OSPF
+
+I configured OSPF in a five-router topology with Area 0 as the
+backbone and Areas 1 and 2 connected through area border routers.
+R1 and R2 acted as area border routers, while R3 was internal to
+Area 0.
+
+[Open the Packet Tracer simulation](./multi-area-ospf.pkt)
+
+## Network topology
+
+![Five-router OSPF topology spanning Areas 0, 1 and 2](./ospf-topology.png)
+
+## Verification
+
+### End-to-end connectivity
+
+I used `ping` to verify that PC1 could reach PC4 and `tracert`
+to inspect the path between them.
+
+![Ping and traceroute from PC1 to PC4](./pc1-to-pc4-connectivity.png)
+
+### OSPF routes
+
+I inspected R1's routing table to check how it reached remote
+subnets. In Cisco IOS, `O IA` identifies a route learned from
+another OSPF area.
+
+![R1 routing table](./r1-routing-table.png)
+
+
+
 
