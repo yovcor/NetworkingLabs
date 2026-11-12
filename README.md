@@ -58,7 +58,7 @@ was configured.
 
 ## Verification results
 
-### Part 2 — VLAN isolation on one switch
+VLAN isolation on one switch
 
 PC1 (`10.1.1.1`) reached PC3 (`10.1.1.2`) in VLAN 10.
 The ping to PC2 (`10.1.2.1`) in VLAN 20 failed before inter-VLAN
@@ -66,13 +66,13 @@ routing was configured.
 
 ![PC1 ping tests showing same-VLAN connectivity and VLAN isolation](./ping_tests.png)
 
-### Part 3 — Same-VLAN connectivity across two switches
+Same-VLAN connectivity across two switches
 
 PC1 reached PC5 in VLAN 10 across the link between the two switches.
 
 ![PC1 to PC5 connectivity across two switches](./cross_switch_ping.png)
 
-### Part 4 — Inter-VLAN routing with 802.1Q
+Inter-VLAN routing with 802.1Q
 
 I configured router subinterfaces as default gateways for VLANs 10
 and 20. PC1 then successfully reached PC2 in VLAN 20.
