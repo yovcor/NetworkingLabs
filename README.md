@@ -1,4 +1,4 @@
-IPv4 Addressing, Static Routing and RIPv2
+1. IPv4 Addressing, Static Routing and RIPv2
 
 **Tool:** Cisco Packet Tracer
 
@@ -35,4 +35,48 @@ connectivity by pinging PC4 from PC1 across the two-router network.
 ![Packet Tracer command prompt showing the PC1 to PC4 ping test](./Dynamic_PingPC1_PC4.png)
 
 [View the RIP routing table](./Dynamic_RoutingTable.png)
+
+2. VLAN Segmentation and Inter-VLAN Routing
+
+I configured VLANs on one and two switches, then used IEEE 802.1Q
+router subinterfaces to enable communication between VLANs. I used
+`ping` and `tracert` to test connectivity before and after routing
+was configured.
+
+| VLAN | IPv4 subnet |
+| --- | --- |
+| VLAN 10 | `10.1.1.0/24` |
+| VLAN 20 | `10.1.2.0/24` |
+
+## Packet Tracer simulations
+
+| Part | Simulation | What it demonstrates |
+| --- | --- | --- |
+| 2 | [Single-switch VLANs](./singleSwitchVLAN.pkt) | Same-VLAN connectivity and isolation between VLANs |
+| 3 | [Two-switch VLANs](./TwoSwitchVLAN.pkt) | Same-VLAN connectivity across two switches |
+| 4 | [Inter-VLAN routing](./interVLANRouting.pkt) | Communication between VLANs through router subinterfaces |
+
+## Verification results
+
+### Part 2 — VLAN isolation on one switch
+
+PC1 (`10.1.1.1`) reached PC3 (`10.1.1.2`) in VLAN 10.
+The ping to PC2 (`10.1.2.1`) in VLAN 20 failed before inter-VLAN
+routing was configured.
+
+![PC1 ping tests showing same-VLAN connectivity and VLAN isolation](./ping_tests.png)
+
+### Part 3 — Same-VLAN connectivity across two switches
+
+PC1 reached PC5 in VLAN 10 across the link between the two switches.
+
+![PC1 to PC5 connectivity across two switches](./cross_switch_ping.png)
+
+### Part 4 — Inter-VLAN routing with 802.1Q
+
+I configured router subinterfaces as default gateways for VLANs 10
+and 20. PC1 then successfully reached PC2 in VLAN 20.
+
+![Successful ping from PC1 in VLAN 10 to PC2 in VLAN 20](./inter_VLAN_ping.png)
+
 
